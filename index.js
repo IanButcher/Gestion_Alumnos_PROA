@@ -10,7 +10,7 @@ const moment = require('moment')
 
 // Server config
 const app = express();
-const puerto = 3000;
+const puerto = 8080;
 app.set('view engine', 'ejs')
 
 // Method Override (PUT & DELETE)
@@ -25,7 +25,7 @@ app.use(express.static('public'))
 app.locals.moment = moment
 
 // Mongoose connection
-const uri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/bitqualyPrueba'
+const uri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/proaQualy'
 async function main() {
     await mongoose.connect(uri)
     console.log('Connection to MongoDB successful')

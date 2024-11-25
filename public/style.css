@@ -107,7 +107,7 @@ body, html {
 .login-button {
     width: 100%;
     padding: 15px;
-    background-color: #e4002b;
+    background-color: #024d86;
     color: white;
     border: none;
     border-radius: 5px;
@@ -117,7 +117,7 @@ body, html {
 }
 
 .login-button:hover {
-    background-color: #c20025;
+    background-color: #6e9aba;
 }
 
 /* Media queries para responsividad */

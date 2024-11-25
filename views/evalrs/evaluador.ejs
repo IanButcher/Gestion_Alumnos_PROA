@@ -31,8 +31,8 @@
                     <div class="user-info">
                         
                         <h2><%= evaluador.nombre %> <%= evaluador.apellido %></h2>
-                        <p>Evaluador</p>
-                        <p>Número de legajo: <%= evaluador.legajo %></p>
+                        <p>Profesor</p>
+                        <p>Número de dni: <%= evaluador.legajo %></p>
                     </div>
                 </div>
                     <!-- Hidden form to handle employee deactivation -->
@@ -67,7 +67,7 @@
                 </form>
                 <aside class="right-panel">
                     <div class="filter-section">
-                        <h3>Estado de empleado</h3>
+                        <h3>Estado de estudiante</h3>
                         <% if (user && user.rol === 'Administrador') { %>
                             <button class="btn-disable" onclick="popupEliminar('<%= evaluador._id %>')">Desactivar</button>
                         <% } %>
@@ -122,7 +122,7 @@
                                 <p><strong><%= evaluacion.formulario ? evaluacion.formulario.titulo : 'Formulario no asignado' %></strong></p>
                                 <p>Fecha de inicio: <%= evaluacion.fechaInicio ? evaluacion.fechaInicio.toDateString() : 'N/A' %></p>
                                 <p>Fecha límite: <%= evaluacion.deadline ? evaluacion.deadline.toDateString() : 'Sin fecha' %></p>
-                                <p>Empleado: <%= evaluacion.empleado.nombre %> <%= evaluacion.empleado.apellido %></p>
+                                <p>Estudiante: <%= evaluacion.empleado.nombre %> <%= evaluacion.empleado.apellido %></p>
                             </div>
                         </div>
                     <% }) %>
@@ -140,7 +140,7 @@
                                 <p><strong><%= evaluacion.formulario ? evaluacion.formulario.titulo : 'Formulario no asignado' %></strong></p>
                                 <p>Fecha de inicio: <%= evaluacion.fechaInicio ? evaluacion.fechaInicio.toDateString() : 'N/A' %></p>
                                 <p>Fecha límite: <%= evaluacion.deadline ? evaluacion.deadline.toDateString() : 'Sin fecha' %></p>
-                                <p>Empleado: <%= evaluacion.empleado.nombre %> <%= evaluacion.empleado.apellido %></p>
+                                <p>Estudiante: <%= evaluacion.empleado.nombre %> <%= evaluacion.empleado.apellido %></p>
                                 <a href="/evaluaciones/preview/<%= evaluacion._id %>" class="btn">Ver Evaluación</a>
                             </div>
                         </div>
