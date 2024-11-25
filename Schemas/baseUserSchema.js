@@ -17,12 +17,6 @@ const baseUserSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    legajo: {
-        type: String,
-        required: true,
-        trim: true,
-        min: 3,
-    },
     password: {
         type: String,
         required: true,

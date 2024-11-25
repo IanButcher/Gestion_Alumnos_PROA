@@ -6,12 +6,12 @@ const flash = require('connect-flash')
 const User = require('../Schemas/baseUserSchema')
 
 // Passport configuration
-passport.use(new LocalStrategy({ usernameField: 'legajo' }, async (legajo, password, done) => {
+passport.use(new LocalStrategy({ usernameField: 'dni' }, async (dni, password, done) => {
   try {
     // Ensure legajo is treated as a number
-    const user = await User.findOne({ legajo: parseInt(legajo) })
+    const user = await User.findOne({ dni: parseInt(legajo) })
     if (!user) {
-      return done(null, false, { message: 'Credenciales inválidas. Verifica tu legajo y contraseña.' })
+      return done(null, false, { message: 'Credenciales inválidas. Verifica tu DNI y contraseña.' })
     }
 
     const isMatch = await user.comparePassword(password);

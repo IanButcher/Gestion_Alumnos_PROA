@@ -198,7 +198,7 @@ router.get('/evaluaciones/my-autoevaluacion/:id', roleAuthorization(['Empleado',
             evaluacion,
             formulario: evaluacion.formulario,
             user: req.user,
-            empleado: evaluacion.empleado ? evaluacion.empleado.nombre : 'Empleado no asignado'
+            empleado: evaluacion.empleado ? evaluacion.empleado.nombre : 'Usuario no asignado'
         });
     } catch (error) {
         console.error('Error fetching evaluation:', error)
@@ -453,8 +453,8 @@ router.get('/evaluaciones/:id/pdf', roleAuthorization(['Administrador', 'Evaluad
 
                 doc.fontSize(14)
                     .text(`Formulario: ${evaluacion.formulario.titulo || 'N/A'}`)
-                    .text(`Empleado: ${evaluacion.empleado ? `${evaluacion.empleado.nombre} ${evaluacion.empleado.apellido} legajo: ${evaluacion.empleado.legajo}` : 'N/A'}`)
-    .text(`Asignado por: ${evaluacion.assignedBy ? `${evaluacion.assignedBy.nombre} ${evaluacion.assignedBy.apellido} legajo: ${evaluacion.assignedBy.legajo}` : 'N/A'}`)
+                    .text(`Empleado: ${evaluacion.empleado ? `${evaluacion.empleado.nombre} ${evaluacion.empleado.apellido} DNI: ${evaluacion.empleado.dni}` : 'N/A'}`)
+    .text(`Asignado por: ${evaluacion.assignedBy ? `${evaluacion.assignedBy.nombre} ${evaluacion.assignedBy.apellido} DNI: ${evaluacion.assignedBy.dni}` : 'N/A'}`)
     .text(`Fecha límite: ${evaluacion.deadline ? evaluacion.deadline.toDateString() : 'Sin fecha'}`)
     .moveDown();
 

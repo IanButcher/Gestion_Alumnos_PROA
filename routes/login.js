@@ -39,25 +39,25 @@ router.post('/save-new-user', upload.single('image'), roleAuthorization(['Admini
     const imagePath = req.file ? 'uploads/images/' + req.file.filename : null;
     try {
         // Check legajo
-        const legajoChecker = await baseUserSchema.findOne({ legajo })
-        if (legajoChecker) {
-            res.send('El legajo ya esta en uso, clickee en la flechita para volver atras para recuperar los datos ingresados')
+        const dniCheck = await baseUserSchema.findOne({ dni })
+        if (dniCheck) {
+            res.status(200).send('Ya existe un usuario con ese DNI')
         } else {
             // Basado en el rol
             const password = crypto.randomBytes(8).toString('hex')
             let newUser;
             switch (rol) {
                 case 'empleado':
-                    newUser = new Empleado({ nombre, apellido, legajo, password, email, imagePath, dni, startline: Date.now() })
+                    newUser = new Empleado({ nombre, apellido, password, email, imagePath, dni, startline: Date.now() })
                     break;
                 case 'evaluador':
-                    newUser = new Evaluador({ nombre, apellido, legajo, password, email, imagePath, dni, startline: Date.now() })
+                    newUser = new Evaluador({ nombre, apellido, password, email, imagePath, dni, startline: Date.now() })
                     break;
                 case 'regulador':
-                    newUser = new Regulador({ nombre, apellido, legajo, password, email, imagePath, dni, startline: Date.now() })
+                    newUser = new Regulador({ nombre, apellido, password, email, imagePath, dni, startline: Date.now() })
                     break;
                 case 'administrador':
-                    newUser = new Administrador({ nombre, apellido, legajo, password, email, imagePath, dni, startline: Date.now() })
+                    newUser = new Administrador({ nombre, apellido, password, email, imagePath, dni, startline: Date.now() })
                     break;
                 default:
                     return res.redirect('/user-creator')
