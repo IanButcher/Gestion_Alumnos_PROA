@@ -63,19 +63,17 @@
                         </div>
                         <div class="form-group left-column">
                             <label for="rol">Rol</label>
-                            <input type="text" id="rol" value="<%= user.rol %>" disabled>
-                        </div>
-                        <div class="form-group right-column">
-                            <label for="assigned-evaluations">Evaluaciones Asignadas</label>
-                            <input type="text" id="assigned-evaluations" value="<%= user.evaluacionesAsignadas %>" disabled>
-                        </div>
-                        <div class="form-group left-column">
-                            <label for="completed-evaluations">Evaluaciones Completadas</label>
-                            <input type="text" id="completed-evaluations" value="<%= user.evaluacionesCompletadas %>" disabled>
-                        </div>
-                        <div class="form-group right-column">
-                            <label for="given-evaluations">Evaluaciones Asignadas por mí</label>
-                            <input type="text" id="given-evaluations" value="<%= user.evaluacionesDadas %>" disabled>
+                            <% if (user.rol === 'Empleado'){
+                                rolcito = 'Estudiante'
+                            } else if (user.rol === 'Evaluador'){
+                                rolcito = 'Docente'
+                            } else if (user.rol === 'Intermediario'){
+                                rolcito = 'Directivo'
+                            } else if (user.rol === 'Administrador'){
+                                rolcito = 'Administrador'
+                            }
+                            %>
+                            <input type="text" id="rol" value="<%= rolcito %>" disabled>
                         </div>
                     </div>
 

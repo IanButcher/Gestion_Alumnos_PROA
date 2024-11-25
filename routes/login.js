@@ -75,13 +75,13 @@ router.post('/save-new-user', upload.single('image'), roleAuthorization(['Admini
             const transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                    user: 'bitqualypassmanager@gmail.com',
-                    pass: 'yoif nkxt bqkl zsrf'
+                    user: 'proaqualynotifications@gmail.com',
+                    pass: 'ewfd ylfp plhb eqrx'
                 }
             })
 
             const mailOptions = {
-                from: 'bitqualypassmanager@gmail.com',
+                from: 'proaqualynotifications@gmail.com',
                 to: email,
                 subject: 'Cuenta creada - Tu contraseña',
                 text: `Hola ${nombre},\n\nTu cuenta de BitQualy ha sido creada. Tu contraseña es: ${password}\nPor favor cámbiala después de iniciar sesión.`
@@ -129,7 +129,12 @@ app.post('/login', (req, res, next) => {
 
 // GET route --> me page
 router.get('/my-account', roleAuthorization(['Administrador', 'Empleado', 'Intermediario', 'Evaluador']), (req, res) => {
-    res.render('myAccount', { user: req.user })
+    const user = req.user
+    if (user){
+        res.render('myAccount', { user })
+    } else {
+        res.redirect('/')
+    }
 })
 
 // POST route --> update pfp, pass & mail
