@@ -44,7 +44,7 @@
         <!-- Lista de empleados -->
         <section class="employee-list">
             <% if (empleados.length === 0) { %>
-                <p>No se encontraron empleados que coincidan con "<%= query %>".</p>
+                <p>No se encontraron estudiantes que coincidan con su busqueda.</p>
             <% } else {%>
                 <% for (let empleado of empleados) { %>
                     <div class="employee">
@@ -53,7 +53,7 @@
                             <div class="employee-info">
                                 <h3><%= empleado.nombre %> <%= empleado.apellido %></h3>
                                 <p>Rol: <%= empleado.rol %></p>
-                                <p>Legajo: <%= empleado.legajo %></p>
+                                <p>DNI: <%= empleado.dni %></p>
                             </div>
                         </a>
                     </div>

@@ -41,7 +41,7 @@ router.post('/save-new-user', upload.single('image'), roleAuthorization(['Admini
         // Check legajo
         const dniCheck = await baseUserSchema.findOne({ dni })
         if (dniCheck) {
-            res.status(200).send('Ya existe un usuario con ese DNI')
+            res.status(200).send('Ya existe un usuario con ese DNI/Número de afiliación')
         } else {
             // Basado en el rol
             const password = crypto.randomBytes(8).toString('hex')

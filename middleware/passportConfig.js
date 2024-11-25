@@ -9,7 +9,7 @@ const User = require('../Schemas/baseUserSchema')
 passport.use(new LocalStrategy({ usernameField: 'dni' }, async (dni, password, done) => {
   try {
     // Ensure legajo is treated as a number
-    const user = await User.findOne({ dni: parseInt(legajo) })
+    const user = await User.findOne({ dni: dni })
     if (!user) {
       return done(null, false, { message: 'Credenciales inválidas. Verifica tu DNI y contraseña.' })
     }
