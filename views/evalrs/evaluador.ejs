@@ -31,8 +31,8 @@
                     <div class="user-info">
                         
                         <h2><%= evaluador.nombre %> <%= evaluador.apellido %></h2>
-                        <p>Profesor</p>
-                        <p>Número de dni: <%= evaluador.legajo %></p>
+                        <p>Docente</p>
+                        <p>Número de afiliado: <%= evaluador.dni %></p>
                     </div>
                 </div>
                     <!-- Hidden form to handle employee deactivation -->
@@ -67,7 +67,7 @@
                 </form>
                 <aside class="right-panel">
                     <div class="filter-section">
-                        <h3>Estado de estudiante</h3>
+                        <h3>Estado de Docente</h3>
                         <% if (user && user.rol === 'Administrador') { %>
                             <button class="btn-disable" onclick="popupEliminar('<%= evaluador._id %>')">Desactivar</button>
                         <% } %>

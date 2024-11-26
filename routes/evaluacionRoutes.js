@@ -88,13 +88,13 @@ router.post('/evaluaciones/assign-autoevaluacion', roleAuthorization(['Administr
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'bitqualypassmanager@gmail.com',
-                pass: 'yoif nkxt bqkl zsrf'
+                user: 'proaqualynotifications@gmail.com',
+                pass: 'ewfd ylfp plhb eqrx'
             }
         })
 
         const mailOptions = {
-            from: 'bitqualypassmanager@gmail.com',
+            from: 'proaqualynotifications@gmail.com',
             to: empleado.email,
             subject: '¡Te han asignado una evaluación!',
             text: `Hola ${empleado.nombre},\n\n¡Te han asignado una nueva evaluación que debes realizar!\n\nTienes hasta ${newEvaluacion.deadline} para completarla.\n`
@@ -141,14 +141,14 @@ router.post('/evaluaciones/assign-autoevaluacion-to-all', roleAuthorization(['Ad
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'bitqualypassmanager@gmail.com',
-                pass: 'yoif nkxt bqkl zsrf'
+                user: 'proaqualynotifications@gmail.com',
+                pass: 'ewfd ylfp plhb eqrx'
             }
         })
 
         for (let user of activeUsers) {
             const mailOptions = {
-                from: 'bitqualypassmanager@gmail.com',
+                from: 'proaqualynotifications@gmail.com',
                 to: user.email,
                 subject: '¡Te han asignado una evaluación!',
                 text: `Hola ${user.nombre},\n\n¡Te han asignado una nueva evaluación que debes realizar!\n\nTienes hasta ${localDeadline} para completarla.\n`
@@ -198,7 +198,7 @@ router.get('/evaluaciones/my-autoevaluacion/:id', roleAuthorization(['Empleado',
             evaluacion,
             formulario: evaluacion.formulario,
             user: req.user,
-            empleado: evaluacion.empleado ? evaluacion.empleado.nombre : 'Empleado no asignado'
+            empleado: evaluacion.empleado ? evaluacion.empleado.nombre : 'Usuario no asignado'
         });
     } catch (error) {
         console.error('Error fetching evaluation:', error)
@@ -453,8 +453,8 @@ router.get('/evaluaciones/:id/pdf', roleAuthorization(['Administrador', 'Evaluad
 
                 doc.fontSize(14)
                     .text(`Formulario: ${evaluacion.formulario.titulo || 'N/A'}`)
-                    .text(`Empleado: ${evaluacion.empleado ? `${evaluacion.empleado.nombre} ${evaluacion.empleado.apellido} legajo: ${evaluacion.empleado.legajo}` : 'N/A'}`)
-    .text(`Asignado por: ${evaluacion.assignedBy ? `${evaluacion.assignedBy.nombre} ${evaluacion.assignedBy.apellido} legajo: ${evaluacion.assignedBy.legajo}` : 'N/A'}`)
+                    .text(`Empleado: ${evaluacion.empleado ? `${evaluacion.empleado.nombre} ${evaluacion.empleado.apellido} DNI: ${evaluacion.empleado.dni}` : 'N/A'}`)
+    .text(`Asignado por: ${evaluacion.assignedBy ? `${evaluacion.assignedBy.nombre} ${evaluacion.assignedBy.apellido} DNI: ${evaluacion.assignedBy.dni}` : 'N/A'}`)
     .text(`Fecha límite: ${evaluacion.deadline ? evaluacion.deadline.toDateString() : 'Sin fecha'}`)
     .moveDown();
 

@@ -38,7 +38,7 @@
             
             <section class="employee-list">
                 <% if (intermediarios.length === 0) { %>
-                    <p>No se encontraron estudiantes que coincidan con "<%= query %>".</p>
+                    <p>No se encontraron miembros del equipo directivo que coincidan con su busqueda.</p>
                 <% } else {%>
                     <% for (empleado of intermediarios) { %>
                         <div class="employee">
@@ -47,7 +47,7 @@
                                 <div class="employee-info">
                                     <h3><%= empleado.nombre %> <%= empleado.apellido %></h3>
                                     <p>Rol: <%= empleado.rol %></p>
-                                    <p>Legajo: <%= empleado.legajo %></p>
+                                    <p>N° de afiliado: <%= empleado.dni %></p>
                                 </div>
                             </a>
                         </div>
